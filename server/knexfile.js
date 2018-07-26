@@ -1,12 +1,26 @@
 // Update with your config settings.
 
+const database = require('./config');
+const path = require('path');
+
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'pg',
     connection: {
-      filename: './dev.sqlite3'
-    }
+      host : '127.0.0.1',
+      user : database.user,
+      password : database.password,
+      database : database.database,
+      charset: 'utf8'
+    },
+    migrations: {
+      directory: path.join(__dirname + '/db/migrations'),
+    },
+    seeds: {
+      directory: path.join(__dirname + '/db/seeds')
+    },
+    debug: true
   },
 
   staging: {
