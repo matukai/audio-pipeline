@@ -18,3 +18,9 @@ module.exports = {
 	password: 'password',
 	database: 'database name'
 }
+
+### Migrations
+knex migrate:latest
+
+### Seeds
+knex seed:run
