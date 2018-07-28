@@ -4,8 +4,11 @@ class Subgenres extends bookshelf.Model {
   get tableName(){return 'subgenres'}
   get hasTimestamps(){ return true }
 
-  genre(){
-    return this.hasMany('Subgenres')
+  threads(){
+    return this.hasMany('Threads')
+  }  
+  genres(){
+    return this.belongsTo('Genres')
   }
 }
 
