@@ -6,7 +6,7 @@ const router = express.Router();
 router.route('/')
 .get((req,res)=>{
   console.log('hitting route')
-  return Users 
+  return Users
   .fetchAll()
   .then(result=>{
     return res.json(result)
