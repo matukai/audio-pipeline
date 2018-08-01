@@ -1,0 +1,71 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../db/models/Users')
+
+router.route('/')
+.get((req,res)=>{
+  return User
+  .fetchAll()
+  .then(result=>{
+    return res.json(result)
+  })
+})
+.post((req,res) => {
+  return new User ({
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password
+  })
+  .save()
+  .then(newUser => {
+    return res.json(newUser);
+  })
+  .catch(err => {
+    res.json({message: err})
+  })
+})
+
+router.route('/:id')
+.get((req,res) => {
+  return new User ({id: req.params.id})
+  .fetch()
+  .then(user => {
+    if(!user) {
+      res.send('User does not exist')
+    }
+    return res.json(user)
+  })
+  .catch(err => {
+    res.json({message: err})
+  })
+})
+.put((req,res) => {
+  if(!req.body.password | !req.body.email | !req.body.username){
+    res.json('Fill in all of the required fields')
+  }else {
+    return new User ({id: req.params.id})
+    .save({
+      email: req.body.email,
+      username: req.body.username,
+      password: req.body.password
+    })
+    .then(userEdited => {
+      return res.json(userEdited)
+    })
+    .catch(err => {
+      res.json({message: err})
+    })
+  }
+})
+.delete((req,res) => {
+  return new User ({id: req.params.id})
+  .destroy()
+  .then(result => {
+    return res.json(result)
+  })
+  .catch(err => {
+    res.json({message: err})
+  })
+})
+
+module.exports = router;
