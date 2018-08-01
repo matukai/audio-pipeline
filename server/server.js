@@ -1,7 +1,7 @@
 //MODULES
 const express = require('express');
 const bodyParser = require('body-parser');
-const apiUsers = require('./routes/users')
+const apiUsers = require('./routes/users');
 
 //CONSTANTS
 const app = express();

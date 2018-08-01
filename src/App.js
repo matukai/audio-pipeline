@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import { getUsers } from './action'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+  }
+
+  componentWillMount(){
+    this.props.getUsers();
+  }
+  
   render() {
     return (
       <div className="App">
@@ -18,4 +28,25 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateTopProps = state =>{
+  console.log(state)
+ return{
+    users:state.user
+  }
+}
+
+const mapDispatchToProps = dispatch =>{
+  return{
+    getUsers: ()=>{
+      dispatch(getUsers())
+    }
+  }
+}
+
+
+const ConnectedApp = connect (
+  mapStateTopProps,
+  mapDispatchToProps
+)(App)
+
+export default ConnectedApp;
