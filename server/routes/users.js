@@ -9,6 +9,9 @@ router.route('/')
   .then(result=>{
     return res.json(result)
   })
+  .catch(err => {
+    res.json({message: err})
+  })
 })
 .post((req,res) => {
   return new User ({
