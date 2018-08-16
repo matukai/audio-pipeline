@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const apiUsers = require('./routes/users')
 const apiThreads = require('./routes/threads');
+const apiGenres = require('./routes/genres');
+const apiSubgenres = require('./routes/subgenres');
 
 //CONSTANTS
 const app = express();
@@ -19,6 +21,8 @@ app.get('/', (req,res)=>{
 })
 app.use('/api/users', apiUsers);
 app.use('/api/threads', apiThreads);
+app.use('/api/genres', apiGenres);
+app.use('/api/subgenres', apiSubgenres);
 
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);
