@@ -16,9 +16,6 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 
 //ROUTES
-app.get('/', (req,res)=>{
-  res.send('smoketest')
-})
 app.use('/api/users', apiUsers);
 app.use('/api/threads', apiThreads);
 app.use('/api/genres', apiGenres);

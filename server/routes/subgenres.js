@@ -5,7 +5,6 @@ const Subgenre = require('../db/models/Subgenres');
 
 router.route('/')
 .get((req,res) => {
-  console.log('here')
   return Subgenre
   .fetchAll({withRelated: ['genres']})
   .then(allSubgenres => {
@@ -16,27 +15,6 @@ router.route('/')
   })
 })
 
-let num = 0;
-router.route('/:id')
-.get((req,res) => {
-  num = req.params.id
-  console.log(num)
 
-  console.log('here')
-  return Subgenre
-  .fetchAll({withRelated: ['genres']})
-  .then(result => {
-    
-    console.log('aaaaa')
-    let sub = result.models.filter(elem => {
-      return elem.attributes.genre_id === parseInt(num)
-    })
-    console.log('this is sub', sub)
-    return res.json(sub)
-  })
-  .catch(err => {
-    res.json({message: err})
-  })
-})
 
 module.exports = router;
