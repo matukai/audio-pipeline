@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { getUsers } from './action'
 import Main from './component/Main';
+// import Navbar from './container/Navbar';
 
 class App extends Component {
   constructor(props){
@@ -17,6 +18,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {/* <Navbar /> */}
         <h1>AuDiO pIpElInE</h1>
         <div className="Main">
           <Main />
