@@ -31,36 +31,40 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user,done) => {
-  console.log(user,done)
-  console.log('serialize')
+  // console.log(user,done)
+  // console.log('serialize')
   return done(null, {
     id: user.id,
-    username: user.username
+    username: user.username,
+    test: 'asdfadf'
   })
 })
 
+//
 passport.deserializeUser((user,done) => {
-  console.log('deserialize');
-  console.log(user,done)
+  // console.log('deserialize');
+  // console.log(user,done)
   new User ({id: user.id})
   .fetch()
   .then(user => {
-    console.log('deserialize user', user)
+    // console.log('deserialize user', user)
     user = user.toJSON();
+    // console.log(user.password)
     return done(null, {
       id: user.id,
-      username: user.username
+      username: user.username,
+      test: 'asdfasd'
     })
   })
 })
 
 passport.use(new LocalStrategy((username, password, done) => {
-  console.log(username)
+  // console.log(username)
   return new User({ username: username})
   .fetch()
   .then(user => {
     user = user.toJSON()
-    console.log('aaaaa', user)
+    // console.log('aaaaa', user)
 
     if(user === null) {
 
@@ -68,12 +72,12 @@ passport.use(new LocalStrategy((username, password, done) => {
     }else {
       bcrypt.compare(password, user.password)
       .then(res => {
-        console.log('reeeees',res)
+        // console.log('reeeees',res)
         if(res) {
-          console.log('beer')
+          // console.log('beer')
           return done(null, user)
         }else {
-          console.log('teer')
+          // console.log('teer')
           return done(null, false, {message: 'Wrong username or password'})
         }
       });
@@ -108,7 +112,7 @@ app.post('/api/register', (req,res) => {
 })
 
 app.post('/api/login', passport.authenticate('local'), (req,res) => {
-  console.log('login req header',req.header)
+  // console.log('login req header',req.header)
   if(req.user) {
     return res.status(200).json({
       user: req.user.id,
@@ -123,7 +127,7 @@ app.post('/api/login', passport.authenticate('local'), (req,res) => {
 })
 
 app.get('/api/logout', (req,res) => {
-  console.log('yoube logged out')
+  // console.log('yoube logged out')
   req.logout();
   if(!req.user) {
     return res.status(200).json({
