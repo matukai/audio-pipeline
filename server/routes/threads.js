@@ -34,9 +34,6 @@ router.route('/')
 
 router.route('/:id')
 .get((req,res) => {
-  console.log('here')
-  // console.log('REQ PARAMS',req.params,req.params.id,req.user.id)
-  console.log('zzzzzzzzzzzzzzzzz',req.user.id,req.params.id)
   // isAuthorized(req.user.id, req.params.id)
   return new Thread ({id: req.params.id})
   .fetch()
