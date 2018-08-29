@@ -4,6 +4,7 @@ const Thread = require('../db/models/Threads');
 const Subgenre = require('../db/models/Subgenres');
 const Genre = require('../db/models/Genres');
 const Users = require('../db/models/Users');
+const { isAuthenticated } = require('./helper');
 
 router.route('/')
 .get((req,res) => {
@@ -16,7 +17,7 @@ router.route('/')
     res.json({message: err})
   })
 })
-.post((req,res) => {
+.post(isAuthenticated, (req,res) => {
   return new Thread ({
     body: req.body.body,
     user_id: req.body.user_id,
@@ -33,7 +34,9 @@ router.route('/')
 
 router.route('/:id')
 .get((req,res) => {
-
+  // console.log('REQ PARAMS',req.params,req.params.id,req.user.id)
+  // console.log(req.user.id,req.params.id)
+  isAuthorized(req.user.id, req.params.id)
   return new Thread ({id: req.params.id})
   .fetch()
   .then(thread => {
@@ -62,11 +65,23 @@ router.route('/:id')
     })
   }
 })
-.delete((req,res) => {
+.delete(isAuthenticated,(req,res) => {
+  //var user is the thread owner
+  //You can delete only threads posted by user logged in (req.user.id) which is decorated from passport 
+  let user = null;
   return new Thread ({id: req.params.id})
-  .destroy()
+  .fetch()
   .then(result => {
-    return res.json(result)
+    user = result.attributes.user_id;
+    if(req.user.id === user) {
+      return new Thread ({id: req.params.id})
+      .destroy()
+      .then(result => {
+        return res.json(result)
+      })
+    }else {
+      return res.json('this is not your thread')
+    }
   })
   .catch(err => {
     res.json({message: err})
