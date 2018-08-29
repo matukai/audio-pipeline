@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import logo from './logo.svg';
 import './App.css';
 import { getUsers } from './action'
 import Main from './component/Main';
-// import Navbar from './container/Navbar';
+import Navbar from './container/Navbar';
 
 class App extends Component {
   constructor(props){
@@ -18,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Navbar /> */}
+        <Navbar />
         <h1>AuDiO pIpElInE</h1>
         <div className="Main">
           <Main />
@@ -29,7 +28,6 @@ class App extends Component {
 }
 
 const mapStateTopProps = state =>{
-  console.log(state)
  return{
     users:state.user
   }
