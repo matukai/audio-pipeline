@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../index.css";
+import { getUsers, loginUser } from '../action/index';
+import { Redirect } from 'react-router-dom';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -10,6 +13,10 @@ export default class Login extends Component {
       username: "",
       password: ""
     };
+  }
+
+  componentWillMount() {
+    this.props.getUsers()
   }
 
   validateForm() {
@@ -23,11 +30,20 @@ export default class Login extends Component {
   }
 
   handleSubmit = event => {
-    console.log('zzzzzzzzz',this.state)
     event.preventDefault();
+    let data = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.loginUser(data)
   }
 
   render() {
+    if(this.props.loggedUser){
+      return (
+        <Redirect to="/" />
+      )
+    }
     return (
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
@@ -60,3 +76,28 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state =>{
+  return{
+     users:state.user,
+     loggedUser: state.users.loggedUser
+   }
+ }
+ 
+const mapDispatchToProps = dispatch =>{
+  return{
+    loginUser: (user)=>{
+      dispatch(loginUser(user))
+    },
+    getUsers: () => {
+      dispatch(getUsers())
+    }
+  }
+ }
+ 
+ const ConnectedApp = connect (
+   mapStateToProps,
+   mapDispatchToProps
+ )(Login)
+ 
+ export default ConnectedApp;

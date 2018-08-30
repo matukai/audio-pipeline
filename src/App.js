@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbar />
+        {/* <Navbar /> */}
         <h1>AuDiO pIpElInE</h1>
         <div className="Main">
           <Main />
@@ -28,6 +28,7 @@ class App extends Component {
 }
 
 const mapStateTopProps = state =>{
+  // console.log('AAAPPP',state)
  return{
     users:state.user
   }
