@@ -16,10 +16,9 @@ router.route('/')
   })
 })
 
-let num = 0;
 router.route('/:id')
 .get((req,res) => {
-  num = req.params.id
+  let num = req.params.id;
   return Subgenre
   .fetchAll({withRelated: ['genres']})
   .then(result => {
