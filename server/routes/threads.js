@@ -20,7 +20,7 @@ router.route('/')
 .post(isAuthenticated, (req,res) => {
   return new Thread ({
     body: req.body.body,
-    user_id: req.body.user_id,
+    user_id: req.user.id,
     subgenre_id: req.body.subgenre_id
   })
   .save()
@@ -34,9 +34,7 @@ router.route('/')
 
 router.route('/:id')
 .get((req,res) => {
-  // console.log('REQ PARAMS',req.params,req.params.id,req.user.id)
-  // console.log(req.user.id,req.params.id)
-  isAuthorized(req.user.id, req.params.id)
+  // isAuthorized(req.user.id, req.params.id)
   return new Thread ({id: req.params.id})
   .fetch()
   .then(thread => {
@@ -49,16 +47,30 @@ router.route('/:id')
     res.json({message: err})
   })
 })
-.put((req,res) => {
+.put(isAuthenticated, (req,res) => {
+  let user = null;
   if(!req.body.body){
     res.json('Fill in all of the required fields')
   }else {
     return new Thread ({id: req.params.id})
-    .save({
-      body: req.body.body
-    })
-    .then(threadEdited => {
-      return res.json(threadEdited)
+    .fetch()
+    .then(result => {
+      user = result.attributes.user_id;
+      
+      if(req.user.id === user) {
+        return new Thread ({id: req.params.id})
+        .save({
+          body: req.body.body
+        })
+        .then(threadEdited => {
+          return res.json(threadEdited)
+        })
+        .catch(err => {
+          res.json({message: err})
+        })
+      } else {
+        return res.json('this is not your thread')
+      }
     })
     .catch(err => {
       res.json({message: err})

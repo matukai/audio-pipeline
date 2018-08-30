@@ -1,74 +1,30 @@
-// import React, { Component } from 'react';
-// import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import React, { Component } from 'react';
 
-// class NavbarFeatures extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             collapse: false,
-//             isWideEnough: false,
-//             dropdownOpen: false
-//         };
-//     this.onClick = this.onClick.bind(this);
-//     this.toggle = this.toggle.bind(this);
-//     }
+class NavBar extends Component {
 
-//     onClick(){
-//         this.setState({
-//             collapse: !this.state.collapse,
-//         });
-//     }
+  constructor(props) {
+    super(props)
+  }
 
-//     toggle() {
-//         this.setState({
-//             dropdownOpen: !this.state.dropdownOpen
-//         });
-//     }
+  render () {
+    return (
+      <div>
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="/">
+          <img src="https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1475515256%2Fteahupoo-tasmania-waves-WAVY1016.jpg%3Fitok%3DONFppteD&w=700&q=85" width="30" height="30" alt=""/>
+          Audio Pipeline
+          </a>
+          <div >
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link disabled" href="/disabled">disabled</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    )
+  }
+}
 
-//     render() {
-//         return (
-//             <Router>
-//                 <Navbar color="indigo" dark expand="md" scrolling>
-//                     <NavbarBrand href="/">
-//                         <strong>Navbar</strong>
-//                     </NavbarBrand>
-//                     { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
-//                     <Collapse isOpen = { this.state.collapse } navbar>
-//                         <NavbarNav left>
-//                           <NavItem active>
-//                               <NavLink to="#">Home</NavLink>
-//                           </NavItem>
-//                           <NavItem>
-//                               <NavLink to="#">Features</NavLink>
-//                           </NavItem>
-//                           <NavItem>
-//                               <NavLink to="#">Pricing</NavLink>
-//                           </NavItem>
-//                           <NavItem>
-//                               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-//                               <DropdownToggle nav caret>Dropdown</DropdownToggle>
-//                               <DropdownMenu>
-//                                   <DropdownItem href="#">Action</DropdownItem>
-//                                   <DropdownItem href="#">Another Action</DropdownItem>
-//                                   <DropdownItem href="#">Something else here</DropdownItem>
-//                                   <DropdownItem href="#">Something else here</DropdownItem>
-//                               </DropdownMenu>
-//                               </Dropdown>
-//                           </NavItem>
-//                         </NavbarNav>
-//                         <NavbarNav right>
-//                           <NavItem>
-//                             <form className="form-inline md-form mt-0">
-//                               <input className="form-control mr-sm-2 mb-0 text-white" type="text" placeholder="Search" aria-label="Search"/>
-//                             </form>
-//                           </NavItem>
-//                         </NavbarNav>
-//                     </Collapse>
-//                 </Navbar>
-//             </Router>
-//         );
-//     }
-// }
-
-// export default NavbarFeatures;
+export default NavBar;
