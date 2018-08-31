@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const GET_USERS = 'GET_USERS';
 export const LOGIN_USER = 'LOGIN_USER';
+export const REGISTER_USER = 'REGISTER_USER';
 
 export const getUsers = ()=>{
   return dispatch => {
@@ -30,6 +31,21 @@ export const loginUser = (user) => {
         user: result
       })
       
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+export const registerUser = (newUser) => {
+  return dispatch => {
+    return axios.post('/api/users', newUser)
+    .then(result => {
+      dispatch({
+        type: REGISTER_USER,
+        newUser: result
+      })
     })
     .catch(err => {
       console.log(err)
