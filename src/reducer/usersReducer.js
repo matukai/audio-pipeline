@@ -3,6 +3,8 @@ import {GET_USERS, LOGIN_USER, REGISTER_USER } from '../action'
 const initialState = {}
 
 export default(state = initialState, action = {}) =>{
+  // console.log(state,action)
+  
   switch(action.type){
     case GET_USERS:
       return {...state,users:action.users}

@@ -3,6 +3,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import '../index.css';
 import { registerUser } from '../action/index';
+import { Redirect } from 'react-router-dom';
 
 class Register extends Component {
   constructor (props) {
@@ -35,8 +36,24 @@ class Register extends Component {
     this.props.registerUser(newUser)
   }
 
+  redirectToUserProfile = () => {
+    let link = '/api/users/' + this.props.newLoggedUser.data.id;
+    return link;
+  }
+
   render() {
-    console.log('RRRR STATE',this.state)
+    if(this.props.newLoggedUser) {
+      return (
+        // <Redirect to={this.redirectToUserProfile()} />
+        <Redirect to='/' />
+
+      )
+    }
+    // else {
+    //   return (
+    //     <Redirect to='/register' />
+    //   )
+    // }
     return (
       <div className="Register">
         <form onSubmit={this.handleSubmit}>
@@ -76,13 +93,11 @@ class Register extends Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
-
+    newLoggedUser: state.users.registeredUser
   }
 }
 

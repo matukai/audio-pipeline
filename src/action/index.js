@@ -30,7 +30,6 @@ export const loginUser = (user) => {
         type: LOGIN_USER,
         user: result
       })
-      
     })
     .catch(err => {
       console.log(err)
