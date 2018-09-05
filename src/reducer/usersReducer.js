@@ -1,4 +1,4 @@
-import {GET_USERS, LOGIN_USER, REGISTER_USER } from '../action'
+import {GET_USERS, LOGIN_USER, ADD_THREAD, REGISTER_USER } from '../action'
 
 const initialState = {}
 
@@ -12,6 +12,8 @@ export default(state = initialState, action = {}) =>{
       return {...state,loggedUser:action.user}
     case REGISTER_USER:
       return {...state, registeredUser:action.newUser}
+    case ADD_THREAD:
+      return {...state, lastThread: action.thread}
 
     default:
     return state;

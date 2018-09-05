@@ -20,8 +20,9 @@ router.route('/')
 .post(isAuthenticated, (req,res) => {
   return new Thread ({
     body: req.body.body,
+    title: req.body.title,
     user_id: req.user.id,
-    subgenre_id: req.body.subgenre_id
+    subgenre_id: 1
   })
   .save()
   .then(newThread => {
