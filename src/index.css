@@ -11,3 +11,12 @@ body {
   margin: 0 auto;
   max-width: 320px;
 }
+
+.Addthread {
+  padding: 60px 0;
+}
+
+.Addthread form {
+  margin: 0 auto;
+  max-width: 600px;
+}

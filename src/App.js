@@ -28,7 +28,7 @@ class App extends Component {
 }
 
 const mapStateTopProps = state =>{
-  // console.log('AAAPPP',state)
+  console.log('AAAPPP',state)
  return{
     users:state.user
   }
