@@ -33,6 +33,19 @@ router.route('/')
   })
 })
 
+router.route('/recent')
+.get((req,res) => {
+  return Thread
+  .fetchAll({withRelated: ['subgenres','users']})
+  .then(result => {
+    result = result.models.reverse().slice(0,5)
+    return res.json(result)
+  })
+  .catch(err => {
+    res.json({message: err})
+  })
+})
+
 router.route('/:id')
 .get((req,res) => {
   // isAuthorized(req.user.id, req.params.id)
@@ -126,5 +139,7 @@ router.route('/subgenre/:id')
     res.json({message: err})
   })
 })
+
+
 
 module.exports = router;

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../index.css";
 import { getUsers, loginUser } from '../action/index';
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router';
 
 class Login extends Component {
   constructor(props) {
@@ -13,10 +13,6 @@ class Login extends Component {
       username: "",
       password: ""
     };
-  }
-
-  componentWillMount() {
-    this.props.getUsers()
   }
 
   validateForm() {
