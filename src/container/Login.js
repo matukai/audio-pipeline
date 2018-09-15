@@ -33,7 +33,7 @@ class Login extends Component {
     }
     this.props.loginUser(data)
   }
-
+  
   render() {
     if(this.props.loggedUser){
       return (

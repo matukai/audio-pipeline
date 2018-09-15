@@ -30,12 +30,13 @@ export const loginUser = (user) => {
   return dispatch => {
     return axios.post('/api/login',user)
     .then(result => {
-      dispatch({
-        type: LOGIN_USER,
-        user: result
-      })
+        dispatch({
+          type: LOGIN_USER,
+          user: result
+        })
     })
     .catch(err => {
+      alert('Incorrect Username or Password')
       console.log(err)
     })
   }
@@ -43,7 +44,7 @@ export const loginUser = (user) => {
 
 export const registerUser = (newUser) => {
   return dispatch => {
-    return axios.post('/api/users', newUser)
+    return axios.post('/api/register', newUser)
     .then(result => {
       dispatch({
         type: REGISTER_USER,
@@ -55,7 +56,6 @@ export const registerUser = (newUser) => {
     })
   }
 }
-
 
 export const addThread = (data) => {
   return dispatch => {

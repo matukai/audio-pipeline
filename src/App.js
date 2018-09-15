@@ -20,7 +20,7 @@ class App extends Component {
   }
   
   render() {
-
+    localStorage.setItem('Username','User1')
     return (
       <div className="App">
         {/* <Navbar /> */}
@@ -34,7 +34,7 @@ class App extends Component {
 }
 
 const mapStateTopProps = state =>{
-  console.log('APP STATE',state)
+  // console.log('APP STATE',state)
  return{
     users:state.user
   }
