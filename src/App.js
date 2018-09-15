@@ -5,6 +5,7 @@ import { getUsers, recentThreads } from './action'
 import Main from './component/Main';
 import Navbar from './container/Navbar';
 import { withRouter } from 'react-router-dom';
+import Logout from './container/Logout';
 
 class App extends Component {
   constructor(props){
@@ -20,10 +21,11 @@ class App extends Component {
   }
   
   render() {
-    localStorage.setItem('Username','User1')
+    console.log(localStorage)
     return (
       <div className="App">
         {/* <Navbar /> */}
+        <Logout />
         <h1>AuDiO pIpElInE</h1>
         <div className="Main">
           <Main />

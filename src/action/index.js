@@ -30,10 +30,13 @@ export const loginUser = (user) => {
   return dispatch => {
     return axios.post('/api/login',user)
     .then(result => {
+      if(result){
         dispatch({
           type: LOGIN_USER,
           user: result
         })
+        localStorage.setItem('User',result.data.username)
+      }
     })
     .catch(err => {
       alert('Incorrect Username or Password')
