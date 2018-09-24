@@ -38,7 +38,6 @@ class Newthread extends Component {
   render() {
     
     if(this.props.thread){
-      console.log(this.props.thread.data.id)
       return (
         <Redirect to="/" />
       )
@@ -77,7 +76,6 @@ class Newthread extends Component {
 }
 
 const mapStateToProps = state =>{
-  console.log('newwwwthread',state.users.lastThread)
   return{
      users:state.user,
      thread: state.users.lastThread

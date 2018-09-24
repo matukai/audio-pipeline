@@ -6,6 +6,7 @@ import About from '../component/About';
 import Login from '../container/Login';
 import Register from '../container/Register';
 import Newthread from '../container/Newthread'
+import ThreadDetail from '../container/ThreadDetail';
 
 const Main = props => (
   <main className="main">
@@ -15,6 +16,7 @@ const Main = props => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/addpost" component={Newthread} />
+      <Route exact path="/thread/:id" component={ThreadDetail} />
     </Switch>
   </main>
 )

@@ -3,7 +3,6 @@ import {GET_USERS, LOGIN_USER, ADD_THREAD, REGISTER_USER } from '../action'
 const initialState = {}
 
 export default(state = initialState, action = {}) =>{
-  // console.log(state,action)
   
   switch(action.type){
     case GET_USERS:

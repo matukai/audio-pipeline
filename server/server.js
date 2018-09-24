@@ -31,57 +31,47 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user,done) => {
-  // console.log(user,done)
-  // console.log('serialize')
+  console.log('serialize')
   return done(null, {
     id: user.id,
-    username: user.username,
-    test: 'asdfadf'
+    username: user.username
   })
 })
 
-//
 passport.deserializeUser((user,done) => {
-  // console.log('deserialize');
-  // console.log(user,done)
+  console.log('deserialize');
   new User ({id: user.id})
   .fetch()
   .then(user => {
-    // console.log('deserialize user', user)
     user = user.toJSON();
-    // console.log(user.password)
     return done(null, {
       id: user.id,
-      username: user.username,
-      test: 'asdfasd'
+      username: user.username
     })
   })
 })
 
 passport.use(new LocalStrategy((username, password, done) => {
-  // console.log(username)
   return new User({ username: username})
   .fetch()
   .then(user => {
     user = user.toJSON()
-    // console.log('aaaaa', user)
-
     if(user === null) {
-
       return done(null, false, {message: 'Wrong username or password'})
     }else {
       bcrypt.compare(password, user.password)
       .then(res => {
-        // console.log('reeeees',res)
         if(res) {
-          // console.log('beer')
           return done(null, user)
         }else {
-          // console.log('teer')
           return done(null, false, {message: 'Wrong username or password'})
         }
       });
     }
+  })
+  .catch(err => {
+    console.log(err)
+    return done(null, false, {message: 'Wrong username or password'})
   })
 }))
 
@@ -112,7 +102,6 @@ app.post('/api/register', (req,res) => {
 })
 
 app.post('/api/login', passport.authenticate('local'), (req,res) => {
-  // console.log('login req header',req.header)
   if(req.user) {
     return res.status(200).json({
       user: req.user.id,
@@ -128,7 +117,6 @@ app.post('/api/login', passport.authenticate('local'), (req,res) => {
 })
 
 app.get('/api/logout', (req,res) => {
-  // console.log('yoube logged out')
   req.logout();
   if(!req.user) {
     return res.status(200).json({

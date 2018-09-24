@@ -13,20 +13,6 @@ router.route('/')
     res.json({message: err})
   })
 })
-.post((req,res) => {
-  return new User ({
-    email: req.body.email,
-    username: req.body.username,
-    password: req.body.password
-  })
-  .save()
-  .then(newUser => {
-    return res.json(newUser);
-  })
-  .catch(err => {
-    res.json({message: err})
-  })
-})
 
 router.route('/:id')
 .get((req,res) => {

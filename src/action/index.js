@@ -4,6 +4,9 @@ export const GET_USERS = 'GET_USERS';
 export const LOGIN_USER = 'LOGIN_USER';
 export const REGISTER_USER = 'REGISTER_USER';
 export const ADD_THREAD = 'ADD_THREAD';
+export const RECENT_THREADS = 'RECENT_THREADS';
+export const CLICKED_THREAD = 'CLICKED_THREAD';
+
 
 export const getUsers = ()=>{
   return dispatch => {
@@ -27,12 +30,16 @@ export const loginUser = (user) => {
   return dispatch => {
     return axios.post('/api/login',user)
     .then(result => {
-      dispatch({
-        type: LOGIN_USER,
-        user: result
-      })
+      if(result){
+        dispatch({
+          type: LOGIN_USER,
+          user: result
+        })
+        localStorage.setItem('User',result.data.username)
+      }
     })
     .catch(err => {
+      alert('Incorrect Username or Password')
       console.log(err)
     })
   }
@@ -40,7 +47,7 @@ export const loginUser = (user) => {
 
 export const registerUser = (newUser) => {
   return dispatch => {
-    return axios.post('/api/users', newUser)
+    return axios.post('/api/register', newUser)
     .then(result => {
       dispatch({
         type: REGISTER_USER,
@@ -52,7 +59,6 @@ export const registerUser = (newUser) => {
     })
   }
 }
-
 
 export const addThread = (data) => {
   return dispatch => {
@@ -70,25 +76,35 @@ export const addThread = (data) => {
   }
 }
 
-// export const addThread = (data) =>{
-  
-//   let thread = {
-//     title:data.title,
-//     body:data.body
-//   }
-//   console.log('aaction',thread)
-//   return dispatch => {
-//     return axios.post('/api/login',thread)
-//     .then(result => {
-//       console.log(result)
-//       dispatch({
-//         type: LOGIN_USER,
-//         user: result
-//       })
-      
-//     })
-//     .catch(err => {
-//       console.log(err)
-//     })
-//   }
-// }
+export const recentThreads = () => {
+  return dispatch => {
+    return axios.get('/api/threads/recent')
+    .then(result=>{
+      return result.data
+    })
+    .then(result =>{
+      dispatch({
+        type: RECENT_THREADS,
+        threads: result
+      })
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  }
+}
+
+export const clickedThread = (id) => {
+  return dispatch => {
+    return axios.get(`/api/threads/${id}`) 
+    .then(result => {
+      return result.data;
+    })
+    .then(result => {
+      dispatch({
+        type: CLICKED_THREAD,
+        payload: result
+      })
+    })
+  }
+}
