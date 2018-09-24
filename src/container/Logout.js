@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Logout extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Logout extends Component {
 
   onClick() {
     localStorage.clear();
+    axios.get('/api/logout');
   }
 
   render() {
