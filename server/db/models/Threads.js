@@ -5,11 +5,15 @@ class Threads extends bookshelf.Model {
   get hasTimestamps(){ return true }
 
   users(){
-    return this.belongsTo('Users')
+    return this.belongsTo('Users');
   }
 
   subgenres(){
-    return this.belongsTo('Subgenres')
+    return this.belongsTo('Subgenres');
+  }
+
+  comments() {
+    return this.hasMany('Comments');
   }
 
 }
