@@ -51,7 +51,7 @@ router.route('/:id')
 .get((req,res) => {
   // isAuthorized(req.user.id, req.params.id)
   return new Thread ({id: req.params.id})
-  .fetch({withRelated: ['comments']})
+  .fetch({withRelated: ['comments','users']})
   .then(thread => {
     if(!thread) {
       res.send('Thread does not exist')
