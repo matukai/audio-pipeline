@@ -7,7 +7,7 @@ const User = require('../db/models/Users');
 router.route('/')
 .get((req,res) => {
   return Comment
-  .fetchAll({withRelated: ['threads']})
+  .fetchAll({withRelated: ['threads','users']})
   .then(allComments => {
     return res.json(allComments)
   })

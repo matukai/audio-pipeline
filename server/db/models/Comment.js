@@ -5,7 +5,7 @@ class Comments extends bookshelf.Model {
   get hasTimestamps(){ return true }
 
   threads() {
-    return this.belongsTo('Threads');
+    return this.belongsTo('Threads','Users');
   }
 
   users() {
