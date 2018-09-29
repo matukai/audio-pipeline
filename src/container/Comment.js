@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class Comment extends Component {
   constructor(props){
@@ -6,15 +7,31 @@ class Comment extends Component {
   }
 
   render(){
-    // console.log(this.props)
     return (
       <div>
         <h1>{this.props.elem.body}</h1>
-        {/* <h2>Posted: {this.props.elem}</h2> */}
+        <h2>Posted: {this.props.elem.users.username}</h2>
       </div>
     )
   }
 
 }
 
-export default Comment;
+const mapDispatchToProps = state => {
+  return {
+
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+
+  }
+}
+
+const ConnectedApp = connect (
+  mapStateToProps,
+  mapDispatchToProps
+)(Comment)
+
+export default ConnectedApp;

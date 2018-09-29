@@ -18,7 +18,7 @@ router.route('/')
 .post((req,res) => {
   return new Comment ({
     body: req.body.body,
-    thread_id: 27,
+    thread_id: req.body.threadId,
     user_id: req.user.id
   })
   .save()

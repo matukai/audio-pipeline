@@ -3,16 +3,30 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { clickedThread } from '../action';
 import Comment from './Comment';
+import CommentForm from './CommentForm';
 class ThreadDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loadThread: null
+      loadThread: null,
+      comments: null
     }
   }
 
   componentWillMount() {
     this.props.clickedThread(this.props.match.params.id)
+  }
+
+  componentWillReceiveProps() {
+    // console.log(this.props)
+  }
+
+
+  
+  componentWillUnmount() {
+    // console.log('here')
+    this.props.thread?this.setState({comments: this.props.thread}):null
+
   }
 
   render() {
@@ -25,8 +39,9 @@ class ThreadDetail extends Component {
             <br/>
             <p>{this.props.thread.body}</p>
             <br/>
+
+            <CommentForm threadId={this.props.thread.id} />
             {this.props.thread.comments.map((elem,idx) => {
-              // console.log(elem.body)
               return <Comment key={idx} elem={elem} />
             })}
             </div>
@@ -39,7 +54,8 @@ class ThreadDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    thread: state.threads.clickedThread
+    thread: state.threads.clickedThread,
+    addComment: state.threads.addComment
   }
 }
 
