@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { addComment } from '../action';
-
+import axios from 'axios';
 class CommentForm extends Component {
   constructor(props) {
     super(props)
@@ -29,6 +29,11 @@ class CommentForm extends Component {
   }
 
   render() {
+    let th = axios.get(`/api/threads/`)
+    .then(result => {
+      // this.setState({threads: result })
+    })
+    
     return (
       <div className="Addcomment">
         <form onSubmit={this.handleSubmit}>

@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { clickedThread } from '../action';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
+import CommentContainer from './CommentContainer';
+
 class ThreadDetail extends Component {
   constructor(props) {
     super(props)
@@ -17,20 +19,7 @@ class ThreadDetail extends Component {
     this.props.clickedThread(this.props.match.params.id)
   }
 
-  componentWillReceiveProps() {
-    // console.log(this.props)
-  }
-
-
-  
-  componentWillUnmount() {
-    // console.log('here')
-    this.props.thread?this.setState({comments: this.props.thread}):null
-
-  }
-
   render() {
-    // console.log(this.props.thread)
     return (
       <div className="threadDetail">
         {this.props.thread? 
@@ -41,9 +30,9 @@ class ThreadDetail extends Component {
             <br/>
 
             <CommentForm threadId={this.props.thread.id} />
-            {this.props.thread.comments.map((elem,idx) => {
-              return <Comment key={idx} elem={elem} />
-            })}
+            <br/>
+            <CommentContainer comments={this.props.thread.comments} />
+           
             </div>
           :null}
        <br/>

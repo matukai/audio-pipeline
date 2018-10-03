@@ -120,5 +120,8 @@ export const clickedThread = (id) => {
         payload: result
       })
     })
+    .catch(err => {
+      console.log(err)
+    })
   }
 }
