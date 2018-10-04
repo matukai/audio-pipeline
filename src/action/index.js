@@ -6,7 +6,7 @@ export const REGISTER_USER = 'REGISTER_USER';
 export const ADD_THREAD = 'ADD_THREAD';
 export const RECENT_THREADS = 'RECENT_THREADS';
 export const CLICKED_THREAD = 'CLICKED_THREAD';
-
+export const ADD_COMMENT = 'ADD_COMMENT';
 
 export const getUsers = ()=>{
   return dispatch => {
@@ -68,7 +68,21 @@ export const addThread = (data) => {
         type: ADD_THREAD,
         thread: result
       })
-      
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+export const addComment = (data) => {
+  return dispatch => {
+    return axios.post('/api/comments',data)
+    .then(result => {
+      dispatch({
+        type: ADD_COMMENT,
+        payload: result
+      })
     })
     .catch(err => {
       console.log(err)
@@ -105,6 +119,9 @@ export const clickedThread = (id) => {
         type: CLICKED_THREAD,
         payload: result
       })
+    })
+    .catch(err => {
+      console.log(err)
     })
   }
 }

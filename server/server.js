@@ -5,6 +5,7 @@ const apiUsers = require('./routes/users')
 const apiThreads = require('./routes/threads');
 const apiGenres = require('./routes/genres');
 const apiSubgenres = require('./routes/subgenres');
+const apiComments = require('./routes/comments');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const session = require('express-session');
@@ -135,6 +136,8 @@ app.use('/api/users', apiUsers);
 app.use('/api/threads', apiThreads);
 app.use('/api/genres', apiGenres);
 app.use('/api/subgenres', apiSubgenres);
+app.use('/api/comments', apiComments);
+
 
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);

@@ -8,6 +8,10 @@ class Users extends bookshelf.Model {
     return this.hasMany('Threads');
   }
 
+  comments(){
+    return this.hasMany('Comments');
+  }
+
 }
 
 module.exports = bookshelf.model('Users',Users);

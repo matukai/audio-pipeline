@@ -4,6 +4,7 @@ const Thread = require('../db/models/Threads');
 const Subgenre = require('../db/models/Subgenres');
 const Genre = require('../db/models/Genres');
 const Users = require('../db/models/Users');
+const Comment = require('../db/models/Comment');
 const { isAuthenticated } = require('./helper');
 
 router.route('/')
@@ -50,7 +51,7 @@ router.route('/:id')
 .get((req,res) => {
   // isAuthorized(req.user.id, req.params.id)
   return new Thread ({id: req.params.id})
-  .fetch()
+  .fetch({withRelated: ['comments.users','users']})
   .then(thread => {
     if(!thread) {
       res.send('Thread does not exist')

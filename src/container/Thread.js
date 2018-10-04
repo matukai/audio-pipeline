@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { clickedThread } from '../action';
 
+
 class Thread extends Component {
   constructor(props) {
     super(props)

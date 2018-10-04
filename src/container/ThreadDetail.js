@@ -2,12 +2,16 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router'; 
 import { connect } from 'react-redux';
 import { clickedThread } from '../action';
+import Comment from './Comment';
+import CommentForm from './CommentForm';
+import CommentContainer from './CommentContainer';
 
 class ThreadDetail extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loadThread: null
+      loadThread: null,
+      comments: null
     }
   }
 
@@ -23,6 +27,12 @@ class ThreadDetail extends Component {
             <h1>{this.props.thread.title}</h1>
             <br/>
             <p>{this.props.thread.body}</p>
+            <br/>
+
+            <CommentForm threadId={this.props.thread.id} />
+            <br/>
+            <CommentContainer threadId={this.props.thread.id} comments={this.props.thread.comments} />
+           
             </div>
           :null}
        <br/>
@@ -33,7 +43,8 @@ class ThreadDetail extends Component {
 
 const mapStateToProps = state => {
   return {
-    thread: state.threads.clickedThread
+    thread: state.threads.clickedThread,
+    addComment: state.threads.addComment
   }
 }
 
