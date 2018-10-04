@@ -15,7 +15,7 @@ class CommentContainer extends Component {
   }
 
   getComments() {
-    let comments = axios.get('/api/threads/24').then(result => {
+    let comments = axios.get(`/api/threads/${this.props.threadId}`).then(result => {
       this.setState({comments:result})
       return result;
     }).catch(err => {console.log(err)})

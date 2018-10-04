@@ -31,7 +31,7 @@ class ThreadDetail extends Component {
 
             <CommentForm threadId={this.props.thread.id} />
             <br/>
-            <CommentContainer comments={this.props.thread.comments} />
+            <CommentContainer threadId={this.props.thread.id} comments={this.props.thread.comments} />
            
             </div>
           :null}
