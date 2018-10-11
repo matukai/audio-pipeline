@@ -29,11 +29,6 @@ class CommentForm extends Component {
   }
 
   render() {
-    let th = axios.get(`/api/threads/`)
-    .then(result => {
-      // this.setState({threads: result })
-    })
-    
     return (
       <div className="Addcomment">
         <form onSubmit={this.handleSubmit}>

@@ -1,4 +1,4 @@
-import {RECENT_THREADS, CLICKED_THREAD, ADD_COMMENT } from '../action';
+import {RECENT_THREADS, CLICKED_THREAD, ADD_COMMENT, GET_GENRES, CLICKED_GENRE} from '../action';
 
 const initialState = {}
 
@@ -10,6 +10,10 @@ export default(state = initialState, action = {}) => {
       return {...state, clickedThread: action.payload}
     case ADD_COMMENT:
       return {...state, addComment: action.payload}
+    case GET_GENRES:
+      return {...state, genres: action.genres}
+    case CLICKED_GENRE:
+      return {...state, clickGenre: action.genre}
     default:
     return state;
   }

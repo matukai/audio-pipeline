@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './App.css';
-import { getUsers, recentThreads } from './action'
+import { getUsers, recentThreads, getGenres } from './action'
 import Main from './component/Main';
 import Navbar from './container/Navbar';
 import { withRouter } from 'react-router-dom';
@@ -14,6 +14,7 @@ class App extends Component {
 
   componentWillMount () {
     this.props.recentThreads();
+    this.props.getGenres();
   }
 
   componentWillUpdate() {
@@ -21,6 +22,7 @@ class App extends Component {
   }
   
   render() {
+    // console.log('APP PROPS',this.props)
     return (
       <div className="App">
         {/* <Navbar /> */}
@@ -45,6 +47,9 @@ const mapDispatchToProps = dispatch =>{
   return{
     recentThreads: ()=>{
       dispatch(recentThreads())
+    },
+    getGenres: () => {
+      dispatch(getGenres())
     }
   }
 }

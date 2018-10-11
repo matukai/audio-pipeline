@@ -7,8 +7,37 @@ export const ADD_THREAD = 'ADD_THREAD';
 export const RECENT_THREADS = 'RECENT_THREADS';
 export const CLICKED_THREAD = 'CLICKED_THREAD';
 export const ADD_COMMENT = 'ADD_COMMENT';
+export const GET_GENRES = 'GET_GENRES';
+export const CLICKED_GENRE = 'CLICKED_GENRE';
 
-export const getUsers = ()=>{
+export const clickedGenre = (data) => {
+  return dispatch => {
+    dispatch({
+      type: CLICKED_GENRE,
+      genre: data
+    })
+  }
+}
+
+export const getGenres = () => {
+  return dispatch => {
+    return axios.get('/api/genres')
+    .then(result => {
+      return result.data
+    })
+    .then(result =>{
+      dispatch({
+        type: GET_GENRES,
+        genres: result
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
+
+export const getUsers = () => {
   return dispatch => {
     return axios.get('/api/users')
     .then(result=>{
@@ -75,6 +104,8 @@ export const addThread = (data) => {
   }
 }
 
+
+
 export const addComment = (data) => {
   return dispatch => {
     return axios.post('/api/comments',data)
@@ -125,3 +156,4 @@ export const clickedThread = (id) => {
     })
   }
 }
+

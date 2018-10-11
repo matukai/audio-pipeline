@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import {connect} from 'react-redux';
 
-class Comment extends Component {
+class SubGenreContainer extends Component {
   constructor(props){
     super(props)
   }
-
-  render(){
+  render() {
     return (
       <div>
-        <h1>{this.props.elem.body}</h1>
-        <h2>Posted: {this.props.elem.users.username}</h2>
+        {this.props.sub?this.props.sub.map((elem,idx) => {
+          return <h1>{elem.subgenre}</h1>
+        }):null}
       </div>
     )
   }
@@ -31,6 +31,6 @@ const mapDispatchToProps = dispatch => {
 const ConnectedApp = connect (
   mapStateToProps,
   mapDispatchToProps
-)(Comment)
+  )(SubGenreContainer)
 
 export default ConnectedApp;
