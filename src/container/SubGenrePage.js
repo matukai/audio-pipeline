@@ -1,16 +1,18 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import {connect} from 'react-redux';
+import SubGenreContainer from './SubGenreContainer';
 
-class Comment extends Component {
+class SubGenrePage extends Component {
   constructor(props){
     super(props)
   }
-
-  render(){
+  render() {
     return (
       <div>
-        <h1>{this.props.elem.body}</h1>
-        <h2>Posted: {this.props.elem.users.username}</h2>
+        <h1>SubGenre Page</h1>
+        <h1>{this.props.subgenre.genre}</h1>
+        <h1>LIST OF SUB GENRES</h1>
+        <SubGenreContainer />
       </div>
     )
   }
@@ -18,7 +20,7 @@ class Comment extends Component {
 
 const mapStateToProps = state => {
   return {
-
+    subgenre: state.threads.clickGenre
   }
 }
 
@@ -31,6 +33,6 @@ const mapDispatchToProps = dispatch => {
 const ConnectedApp = connect (
   mapStateToProps,
   mapDispatchToProps
-)(Comment)
+  )(SubGenrePage)
 
 export default ConnectedApp;

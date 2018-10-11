@@ -5,10 +5,8 @@ class Genres extends bookshelf.Model {
   get hasTimestamps(){ return true }
   
   subgenres(){
-    return this.hasMany('subgenres')
+    return this.hasMany('Subgenres')
   }
-
-  
 
 }
 
