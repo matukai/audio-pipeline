@@ -8,7 +8,9 @@ class SubGenreContainer extends Component {
   render() {
     return (
       <div>
-        <h1></h1>
+        {this.props.sub?this.props.sub.map((elem,idx) => {
+          return <h1>{elem.subgenre}</h1>
+        }):null}
       </div>
     )
   }

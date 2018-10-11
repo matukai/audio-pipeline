@@ -35,7 +35,6 @@ class Login extends Component {
   }
   
   render() {
-    console.log(this.props)
     if(localStorage.User){
       return (
         <Redirect to="/" />

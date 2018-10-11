@@ -19,7 +19,7 @@ class Genre extends Component {
 
   redirect() {
     if(this.state.toggle){
-      return <Redirect to={'/subgenre'} />
+      return  <Redirect to={`/g/${this.props.idvGenre.genre}`} />
     }
   }
 

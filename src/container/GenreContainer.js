@@ -8,7 +8,7 @@ class GenreContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.getGenres()
+    // this.props.getGenres()
   }
 
   render() {

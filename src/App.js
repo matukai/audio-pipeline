@@ -14,6 +14,7 @@ class App extends Component {
 
   componentWillMount () {
     this.props.recentThreads();
+    this.props.getGenres();
   }
 
   componentWillUpdate() {
