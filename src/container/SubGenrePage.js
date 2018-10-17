@@ -13,7 +13,7 @@ class SubGenrePage extends Component {
     }):null
     a = a?a[0].subgenres:null;
     return (
-      <div>
+      <div className="subGenrePage">
         <h1>SubGenre Page</h1>
         {/* <h1>{this.props.subgenre.genre}</h1> */}
         <h1>LIST OF SUB GENRES</h1>

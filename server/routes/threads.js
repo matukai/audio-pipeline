@@ -23,7 +23,7 @@ router.route('/')
     body: req.body.body,
     title: req.body.title,
     user_id: req.user.id,
-    subgenre_id: 1
+    subgenre_id: req.body.subgenre_id
   })
   .save()
   .then(newThread => {

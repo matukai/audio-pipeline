@@ -11,7 +11,8 @@ class Newthread extends Component {
 
     this.state = {
       title: "",
-      body: ""
+      body: "",
+      subgenre_id: this.props.id
     };
   }
 
@@ -32,16 +33,10 @@ class Newthread extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addThread(this.state)
-  
+    this.setState({title: "" , body: ""})
   }
 
   render() {
-    
-    if(this.props.thread){
-      return (
-        <Redirect to="/" />
-      )
-    }
     return (
       <div className="Addthread">
         <form onSubmit={this.handleSubmit}>
