@@ -29,10 +29,10 @@ class Thread extends Component {
   render() {
     return (
       <div className="thread" onClick={this.onClick.bind(this)}>
-      {this.redirect()}
-       <h1>{this.props.thread.title}</h1>
-       <h1>{this.props.thread.body}</h1>
-       <br/>
+        {this.redirect()}
+        <h1>{this.props.thread.title}</h1>
+        <h1>{this.props.thread.body}</h1>
+        <br/>  
      </div>
     )
   }
@@ -40,6 +40,7 @@ class Thread extends Component {
 
 const mapStateToProps = state => {
   return {
+    
   }
 }
 

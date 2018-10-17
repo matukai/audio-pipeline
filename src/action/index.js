@@ -9,6 +9,16 @@ export const CLICKED_THREAD = 'CLICKED_THREAD';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const GET_GENRES = 'GET_GENRES';
 export const CLICKED_GENRE = 'CLICKED_GENRE';
+export const CLICKED_SUBGENRE = 'CLICKED_SUBGENRE';
+
+export const clickedSubGenre = (data) => {
+  return dispatch => {
+    dispatch({
+      type: CLICKED_SUBGENRE,
+      subGenre: data
+    })
+  }
+}
 
 export const clickedGenre = (data) => {
   return dispatch => {
@@ -90,6 +100,7 @@ export const registerUser = (newUser) => {
 }
 
 export const addThread = (data) => {
+  console.log(data)
   return dispatch => {
     return axios.post('/api/threads',data)
     .then(result => {
