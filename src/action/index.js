@@ -100,7 +100,6 @@ export const registerUser = (newUser) => {
 }
 
 export const addThread = (data) => {
-  console.log(data)
   return dispatch => {
     return axios.post('/api/threads',data)
     .then(result => {

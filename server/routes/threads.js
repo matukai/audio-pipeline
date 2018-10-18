@@ -19,10 +19,12 @@ router.route('/')
   })
 })
 .post(isAuthenticated, (req,res) => {
+  console.log(req.body)
   return new Thread ({
     body: req.body.body,
     title: req.body.title,
     user_id: req.user.id,
+    link: req.body.link,
     subgenre_id: req.body.subgenre_id
   })
   .save()
@@ -39,7 +41,7 @@ router.route('/recent')
   return Thread
   .fetchAll({withRelated: ['subgenres','users']})
   .then(result => {
-    result = result.models.reverse().slice(0,5)
+    result = result.models.reverse().slice(0,10)
     return res.json(result)
   })
   .catch(err => {

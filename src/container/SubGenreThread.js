@@ -18,10 +18,6 @@ class SubGenreThread extends Component {
     this.getThreads();
   }
 
-  componentWillUpdate () {
-    this.getThreads();
-  }
-
   getThreads () {
     axios.get(`/api/subgenres/${this.props.match.params.id}`)
     .then(result => {
@@ -43,8 +39,8 @@ class SubGenreThread extends Component {
     if(this.state.toggle) {
       return (
         <div className="subGenreThread">
-          <h1>toggle true</h1>
-          <NewThread id={this.props.match.params.id} />
+          <h1>Sub Genre Thread</h1>
+          <NewThread func={this.getThreads.bind(this)} id={this.props.match.params.id} />
           {this.state.threads.map((elem,idx) => {
             return <Thread key={idx} thread={elem} />
           })}

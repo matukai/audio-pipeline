@@ -12,6 +12,7 @@ class Newthread extends Component {
     this.state = {
       title: "",
       body: "",
+      link: "",
       subgenre_id: this.props.id
     };
   }
@@ -33,7 +34,12 @@ class Newthread extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addThread(this.state)
-    this.setState({title: "" , body: ""})
+    this.setState({title: "" , body: "", link: ""})
+    this.reload();
+  }
+  
+  reload () {
+    this.props.func();
   }
 
   render() {
@@ -52,6 +58,14 @@ class Newthread extends Component {
             <ControlLabel>Body</ControlLabel>
             <FormControl
               value={this.state.body}
+              onChange={this.handleChange}
+              
+            />
+          </FormGroup>
+          <FormGroup controlId="link" bsSize="large">
+            <ControlLabel>Link</ControlLabel>
+            <FormControl
+              value={this.state.link}
               onChange={this.handleChange}
               
             />
