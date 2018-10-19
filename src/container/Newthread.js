@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../index.css";
-import { Redirect } from 'react-router-dom';
 import {getUsers , addThread} from '../action';
 
 class Newthread extends Component {

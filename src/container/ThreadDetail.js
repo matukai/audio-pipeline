@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router'; 
 import { connect } from 'react-redux';
 import { clickedThread } from '../action';
 import CommentForm from './CommentForm';

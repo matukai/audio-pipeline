@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router';
 import {clickedGenre} from '../action';
-import SubGenreContainer from './SubGenreContainer';
 
 class Genre extends Component {
   constructor(props){

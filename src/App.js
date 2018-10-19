@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './App.css';
-import { getUsers, recentThreads, getGenres } from './action'
+import { recentThreads, getGenres } from './action'
 import Main from './component/Main';
 import Navbar from './container/Navbar';
 import { withRouter } from 'react-router-dom';
 import Logout from './container/Logout';
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
+    // constructor(props){
+    //   super(props)
+    // }
 
   componentWillMount () {
     this.props.recentThreads();
@@ -25,11 +25,11 @@ class App extends Component {
     // console.log('APP PROPS',this.props)
     return (
       <div className="App">
-        {/* <Navbar /> */}
+        <Navbar />
         <Logout />
         <h1>AuDiO pIpElInE</h1>
         <div className="Main">
-          <Main />
+        <Main />
         </div>
       </div>
     );

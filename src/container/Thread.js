@@ -26,8 +26,11 @@ class Thread extends Component {
     }
   }
 
+  linkChecker () {
+
+  }
+
   render() {
-    console.log(this.props)
     return (
       <div className="thread" onClick={this.onClick.bind(this)}>
         {this.redirect()}

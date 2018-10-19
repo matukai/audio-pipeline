@@ -1,11 +1,10 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router';
 import SubGenre from './SubGenre';
 class SubGenreContainer extends Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
   
   render() {
     return (

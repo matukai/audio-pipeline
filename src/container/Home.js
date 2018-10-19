@@ -4,9 +4,9 @@ import Thread from './Thread';
 import '../App.css'
 import Genre from './GenreContainer';
 class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   render() {
     // console.log('HOME PROPS',this.props)
