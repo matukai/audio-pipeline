@@ -66,6 +66,7 @@ export const getUsers = () => {
 }
 
 export const loginUser = (user) => {
+  console.log(user)
   return dispatch => {
     return axios.post('/api/login',user)
     .then(result => {
@@ -85,6 +86,7 @@ export const loginUser = (user) => {
 }
 
 export const registerUser = (newUser) => {
+  console.log('action',newUser)
   return dispatch => {
     return axios.post('/api/register', newUser)
     .then(result => {
@@ -100,7 +102,6 @@ export const registerUser = (newUser) => {
 }
 
 export const addThread = (data) => {
-  console.log(data)
   return dispatch => {
     return axios.post('/api/threads',data)
     .then(result => {

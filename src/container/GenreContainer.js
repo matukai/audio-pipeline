@@ -4,7 +4,7 @@ import  {connect} from 'react-redux';
 import Genre from './Genre';
 class GenreContainer extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   componentDidMount() {

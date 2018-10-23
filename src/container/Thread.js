@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { clickedThread } from '../action';
-
+import ReactPlayer from 'react-player';
 
 class Thread extends Component {
   constructor(props) {
@@ -32,7 +32,9 @@ class Thread extends Component {
         {this.redirect()}
         <h1>{this.props.thread.title}</h1>
         <h1>{this.props.thread.body}</h1>
-        <br/>  
+        {this.props.thread.link ? <ReactPlayer controls url={this.props.thread.link} /> : null}
+        <h1>Posted By: {this.props.thread.users.username}</h1>
+        <br/>
      </div>
     )
   }

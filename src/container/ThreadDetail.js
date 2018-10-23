@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import { Redirect } from 'react-router'; 
 import { connect } from 'react-redux';
 import { clickedThread } from '../action';
-import Comment from './Comment';
 import CommentForm from './CommentForm';
 import CommentContainer from './CommentContainer';
+import ReactPlayer from 'react-player';
 
 class ThreadDetail extends Component {
   constructor(props) {
@@ -23,16 +22,17 @@ class ThreadDetail extends Component {
     return (
       <div className="threadDetail">
         {this.props.thread? 
-          <div> 
+          <div>
             <h1>{this.props.thread.title}</h1>
             <br/>
             <p>{this.props.thread.body}</p>
             <br/>
-
+            {this.props.thread.link ? <ReactPlayer controls url={this.props.thread.link} /> : null}
+            <br/>
             <CommentForm threadId={this.props.thread.id} />
             <br/>
             <CommentContainer threadId={this.props.thread.id} comments={this.props.thread.comments} />
-           
+            <br/>
             </div>
           :null}
        <br/>

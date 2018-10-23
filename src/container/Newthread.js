@@ -2,18 +2,17 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../index.css";
-import { Redirect } from 'react-router-dom';
 import {getUsers , addThread} from '../action';
 
 class Newthread extends Component {
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state = {
       title: "",
       body: "",
+      link: "",
       subgenre_id: this.props.id
-    };
+    }
   }
 
   // componentWillMount() {
@@ -33,7 +32,12 @@ class Newthread extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addThread(this.state)
-    this.setState({title: "" , body: ""})
+    this.setState({title: "" , body: "", link: ""})
+    this.reload();
+  }
+  
+  reload () {
+    this.props.func();
   }
 
   render() {
@@ -52,6 +56,14 @@ class Newthread extends Component {
             <ControlLabel>Body</ControlLabel>
             <FormControl
               value={this.state.body}
+              onChange={this.handleChange}
+              
+            />
+          </FormGroup>
+          <FormGroup controlId="link" bsSize="large">
+            <ControlLabel>Link</ControlLabel>
+            <FormControl
+              value={this.state.link}
               onChange={this.handleChange}
               
             />

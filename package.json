@@ -19,6 +19,7 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.3",
     "react-dom": "^16.4.1",
+    "react-player": "^1.6.6",
     "react-redux": "^5.0.7",
     "react-responsive-navbar": "^1.0.11",
     "react-router-dom": "^4.3.1",
