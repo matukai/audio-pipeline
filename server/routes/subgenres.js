@@ -3,6 +3,7 @@ const router = express.Router();
 const Genre = require('../db/models/Genres');
 const Subgenre = require('../db/models/Subgenres');
 const Thread = require('../db/models/Threads');
+const User = require('../db/models/Users');
 
 router.route('/')
 .get((req,res) => {
@@ -20,7 +21,7 @@ router.route('/:id')
 .get((req,res) => {
   let num = req.params.id;
   return Thread
-  .fetchAll({withRelated: ['subgenres']})
+  .fetchAll({withRelated: ['subgenres','users']})
   .then(result => {
     let threads = result.models.filter(elem => {
       return elem.attributes.subgenre_id === parseInt(num);

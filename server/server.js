@@ -53,6 +53,7 @@ passport.deserializeUser((user,done) => {
 })
 
 passport.use(new LocalStrategy((username, password, done) => {
+  console.log('local strategy',username)
   return new User({ username: username})
   .fetch()
   .then(user => {
@@ -103,6 +104,7 @@ app.post('/api/register', (req,res) => {
 })
 
 app.post('/api/login', passport.authenticate('local'), (req,res) => {
+  console.log('loggin in',req.body)
   if(req.user) {
     return res.status(200).json({
       user: req.user.id,
@@ -137,7 +139,6 @@ app.use('/api/threads', apiThreads);
 app.use('/api/genres', apiGenres);
 app.use('/api/subgenres', apiSubgenres);
 app.use('/api/comments', apiComments);
-
 
 app.listen(PORT, () => {
   console.log(`server is listening on ${PORT}`);

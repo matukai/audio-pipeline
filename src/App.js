@@ -8,9 +8,9 @@ import { withRouter } from 'react-router-dom';
 import Logout from './container/Logout';
 
 class App extends Component {
-    // constructor(props){
-    //   super(props)
-    // }
+    constructor(props){
+      super(props)
+    }
 
   componentWillMount () {
     this.props.recentThreads();

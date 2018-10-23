@@ -6,14 +6,13 @@ import {getUsers , addThread} from '../action';
 
 class Newthread extends Component {
   constructor(props) {
-    super(props);
-
+    super(props)
     this.state = {
       title: "",
       body: "",
       link: "",
       subgenre_id: this.props.id
-    };
+    }
   }
 
   // componentWillMount() {

@@ -3,9 +3,9 @@ import {connect} from 'react-redux';
 import SubGenreContainer from './SubGenreContainer';
 
 class SubGenrePage extends Component {
-  // constructor(props){
-  //   super(props)
-  // }
+  constructor(props){
+    super(props)
+  }
 
   render() {
     let a = this.props.genres?this.props.genres.filter((elem,idx) => {

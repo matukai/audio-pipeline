@@ -26,10 +26,6 @@ class Thread extends Component {
     }
   }
 
-  linkChecker () {
-
-  }
-
   render() {
     return (
       <div className="thread" onClick={this.onClick.bind(this)}>
@@ -37,7 +33,8 @@ class Thread extends Component {
         <h1>{this.props.thread.title}</h1>
         <h1>{this.props.thread.body}</h1>
         {this.props.thread.link ? <ReactPlayer controls url={this.props.thread.link} /> : null}
-        <br/>  
+        <h1>Posted By: {this.props.thread.users.username}</h1>
+        <br/>
      </div>
     )
   }
