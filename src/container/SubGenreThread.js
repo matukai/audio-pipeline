@@ -40,7 +40,9 @@ class SubGenreThread extends Component {
       return (
         <div className="subGenreThread">
           <h1>Sub Genre Thread</h1>
+          {localStorage.User?
           <NewThread func={this.getThreads.bind(this)} id={this.props.match.params.id} />
+          :null}
           {this.state.threads.map((elem,idx) => {
             return <Thread key={idx} thread={elem} />
           })}

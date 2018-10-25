@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from '../container/Home';
 import About from '../component/About';
 import Login from '../container/Login';
+import Logout from '../container/Logout';
 import Register from '../container/Register';
 import ThreadDetail from '../container/ThreadDetail';
 import GenreContainer from '../container/GenreContainer';
@@ -17,6 +18,7 @@ const Main = props => (
       <Route exact path="/" component={Home}/>
       <Route exact path="/about" component={About} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/logout" component={Logout} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/thread/:id" component={ThreadDetail} />
       <Route exact path="/g" component={GenreContainer} />

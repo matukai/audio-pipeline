@@ -57,7 +57,6 @@ class Newthread extends Component {
             <FormControl
               value={this.state.body}
               onChange={this.handleChange}
-              
             />
           </FormGroup>
           <FormGroup controlId="link" bsSize="large">
@@ -65,7 +64,6 @@ class Newthread extends Component {
             <FormControl
               value={this.state.link}
               onChange={this.handleChange}
-              
             />
           </FormGroup>
           <Button

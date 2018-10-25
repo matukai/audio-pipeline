@@ -26,7 +26,6 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <Logout />
         <h1>AuDiO pIpElInE</h1>
         <div className="Main">
         <Main />

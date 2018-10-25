@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 class Logout extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
-  onClick() {
+  logout() {
     localStorage.clear();
     axios.get('/api/logout');
   }
@@ -14,7 +15,8 @@ class Logout extends Component {
   render() {
     return(
       <div>
-        <button onClick={this.onClick.bind(this)} type="button">Logout</button>
+        {this.logout()}
+        <Redirect to="/" />
       </div>
     )
   }
