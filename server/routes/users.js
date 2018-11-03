@@ -14,6 +14,15 @@ router.route('/')
   })
 })
 
+router.route('/check')
+.get((req,res) => {
+  if(req.user) {
+    return res.json({isLoggedIn: true, userId: req.user.id, username: req.user.username})
+  } else {
+    return res.json({isLoggedIn: false})
+  }
+})
+
 router.route('/:id')
 .get((req,res) => {
   return new User ({id: req.params.id})

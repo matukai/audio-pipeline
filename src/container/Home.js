@@ -14,7 +14,6 @@ class Home extends Component {
       <div className="Home">
         <h1>HoMePaGe</h1>
         <br/>
-
         <Genre/>
         <div className="threadBox">
          {this.props.recentThreads?this.props.recentThreads.map((elem,idx)=> { 

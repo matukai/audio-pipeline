@@ -2,9 +2,6 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import SubGenre from './SubGenre';
 class SubGenreContainer extends Component {
-  constructor(props){
-    super(props)
-  }
   
   render() {
     return (

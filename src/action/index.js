@@ -10,6 +10,25 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const GET_GENRES = 'GET_GENRES';
 export const CLICKED_GENRE = 'CLICKED_GENRE';
 export const CLICKED_SUBGENRE = 'CLICKED_SUBGENRE';
+export const CHECK_LOGIN = 'CHECK_LOGIN';
+
+export const checkLogin = () => {
+  return dispatch => {
+    return axios.get('/api/users/check')
+    .then(result => {
+      return result.data
+    })
+    .then(result => {
+      dispatch({
+        type: CHECK_LOGIN,
+        isLoggedIn: result
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
 
 export const clickedSubGenre = (data) => {
   return dispatch => {

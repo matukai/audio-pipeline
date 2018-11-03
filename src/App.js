@@ -6,15 +6,19 @@ import Main from './component/Main';
 import Navbar from './container/Navbar';
 import { withRouter } from 'react-router-dom';
 import Logout from './container/Logout';
-
+import {checkLogin} from './action/index';
 class App extends Component {
     constructor(props){
       super(props)
+      this.state = {
+        log: false
+      }
     }
 
   componentWillMount () {
     this.props.recentThreads();
     this.props.getGenres();
+    this.props.checkLogin();
   }
 
   componentWillUpdate() {
@@ -22,6 +26,7 @@ class App extends Component {
   }
   
   render() {
+    // console.log(this.state)
     // console.log('APP PROPS',this.props)
     return (
       <div className="App">
@@ -49,6 +54,9 @@ const mapDispatchToProps = dispatch =>{
     },
     getGenres: () => {
       dispatch(getGenres())
+    },
+    checkLogin: () => {
+      dispatch(checkLogin())
     }
   }
 }
