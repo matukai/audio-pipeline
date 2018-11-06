@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Thread from './Thread';
 import '../App.css'
 import Genre from './GenreContainer';
+import TestComponent from './testComponent';
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -12,6 +14,10 @@ class Home extends Component {
     // console.log('HOME PROPS',this.props)
     return (
       <div className="Home">
+      <br/>
+        <TestComponent />
+      <br/>
+
         <h1>HoMePaGe</h1>
         <br/>
         <Genre/>

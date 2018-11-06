@@ -10,12 +10,12 @@ class NavBar extends Component {
     }
   }
 
-  componentWillMount () {
+  componentWillUpdate () {
     console.log('mount')
   }
 
   render () {
-    console.log(this.state)
+    // console.log(this.state)
  
     return (
       <div>

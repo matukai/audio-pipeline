@@ -25,3 +25,21 @@ body {
   margin: 0 auto;
   max-width: 600px;
 }
+
+.testParent {
+  animation: slidein 3s linear 1s infinite running;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes slidein {
+  from {
+    margin-right: 100%;
+    width: 0%;
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}
