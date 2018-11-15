@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "../index.css";
+import "../index.scss";
 import { getUsers, loginUser } from '../action/index';
 import { Redirect } from 'react-router';
 
@@ -32,6 +32,7 @@ class Login extends Component {
       password: this.state.password
     }
     this.props.loginUser(data)
+    this.setState({username: '', password: ''})
   }
   
   render() {

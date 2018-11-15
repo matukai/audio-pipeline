@@ -1,0 +1,55 @@
+$blue:blue;
+@mixin yo {
+  color: green;
+}
+
+.signedOut:active {
+  color:red;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: $blue;
+}
+.Login {
+  padding: 60px 0;
+}
+
+.Login form {
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.Addthread {
+  padding: 60px 0;
+}
+
+.Addthread form {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.Addcomment {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.testParent {
+  animation: slidein 3s linear 1s infinite running;
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes slidein {
+  from {
+    margin-right: 100%;
+    width: 0%;
+  }
+
+  to {
+    margin-right: 0%;
+    width: 100%;
+  }
+}

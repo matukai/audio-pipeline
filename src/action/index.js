@@ -10,6 +10,25 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const GET_GENRES = 'GET_GENRES';
 export const CLICKED_GENRE = 'CLICKED_GENRE';
 export const CLICKED_SUBGENRE = 'CLICKED_SUBGENRE';
+export const CHECK_LOGIN = 'CHECK_LOGIN';
+
+export const checkLogin = () => {
+  return dispatch => {
+    return axios.get('/api/users/check')
+    .then(result => {
+      return result.data
+    })
+    .then(result => {
+      dispatch({
+        type: CHECK_LOGIN,
+        isLoggedIn: result
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
 
 export const clickedSubGenre = (data) => {
   return dispatch => {
@@ -66,11 +85,11 @@ export const getUsers = () => {
 }
 
 export const loginUser = (user) => {
-  console.log(user)
   return dispatch => {
     return axios.post('/api/login',user)
     .then(result => {
       if(result){
+        window.location.reload();
         dispatch({
           type: LOGIN_USER,
           user: result
@@ -86,7 +105,6 @@ export const loginUser = (user) => {
 }
 
 export const registerUser = (newUser) => {
-  console.log('action',newUser)
   return dispatch => {
     return axios.post('/api/register', newUser)
     .then(result => {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import "../index.css";
+import "../index.scss";
 import {getUsers , addThread} from '../action';
 
 class Newthread extends Component {
@@ -57,7 +57,6 @@ class Newthread extends Component {
             <FormControl
               value={this.state.body}
               onChange={this.handleChange}
-              
             />
           </FormGroup>
           <FormGroup controlId="link" bsSize="large">
@@ -65,7 +64,6 @@ class Newthread extends Component {
             <FormControl
               value={this.state.link}
               onChange={this.handleChange}
-              
             />
           </FormGroup>
           <Button

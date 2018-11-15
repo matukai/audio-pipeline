@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class NavBar extends Component {
   constructor(props) {
     super(props)
+    this.state = {}
   }
 
   render () {
@@ -16,8 +18,9 @@ class NavBar extends Component {
           <div className="navBarLinks" >
             <div className="navbar-nav">
               <a className="nav-item nav-link active" href="/">Home</a>
-              <a className="nav-item nav-link active" href="/login">Login</a>
-              <a className="nav-item nav-link active" href="/register">Register</a>
+              {localStorage.User?null:<a className="nav-item nav-link active" href="/login">Login</a>}
+              {localStorage.User?null:<a className="nav-item nav-link active" href="/register">Register</a>}
+              {localStorage.User?<a className="nav-item nav-link active" href="/logout">Logout</a>:null}
             </div>
           </div>
         </nav>
@@ -26,4 +29,21 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+const mapStateTopProps = state =>{
+ return{
+   
+  }
+}
+
+const mapDispatchToProps = dispatch =>{
+  return{
+  
+  }
+}
+
+const ConnectedApp = connect (
+  mapStateTopProps,
+  mapDispatchToProps
+)(NavBar)
+
+export default ConnectedApp;

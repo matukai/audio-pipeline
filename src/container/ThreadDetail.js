@@ -29,7 +29,7 @@ class ThreadDetail extends Component {
             <br/>
             {this.props.thread.link ? <ReactPlayer controls url={this.props.thread.link} /> : null}
             <br/>
-            <CommentForm threadId={this.props.thread.id} />
+            {localStorage.User? <CommentForm threadId={this.props.thread.id} />:null}
             <br/>
             <CommentContainer threadId={this.props.thread.id} comments={this.props.thread.comments} />
             <br/>
