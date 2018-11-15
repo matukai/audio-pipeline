@@ -6,9 +6,9 @@ import Genre from './GenreContainer';
 import TestComponent from './testComponent';
 
 class Home extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+  }
 
   render() {
     // console.log('HOME PROPS',this.props)
