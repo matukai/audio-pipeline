@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './App.css';
 import { recentThreads, getGenres } from './action'
+import Header from './container/Header';
 import Main from './component/Main';
-import Navbar from './container/Navbar';
+import Footer from './container/Footer';
 import { withRouter } from 'react-router-dom';
-import Logout from './container/Logout';
 import {checkLogin} from './action/index';
+
 class App extends Component {
     constructor(props){
       super(props)
@@ -26,22 +27,17 @@ class App extends Component {
   }
   
   render() {
-    // console.log(this.state)
-    // console.log('APP PROPS',this.props)
     return (
       <div className="App">
-        <Navbar />
-        <h1>AuDiO pIpElInE</h1>
-        <div className="Main">
+        <Header />
         <Main />
-        </div>
+        <Footer />
       </div>
     )
   }
 }
 
 const mapStateTopProps = state =>{
-  // console.log('APP STATE',state)
  return{
     users:state.user
   }
