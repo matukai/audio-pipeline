@@ -9,7 +9,7 @@ class TestComponent extends Component {
     return (
       <div className="testParent">
         <div className="testChild">
-          <h1>some shit</h1>
+          <h1>Under Construction</h1>
         </div>
       </div>
     )

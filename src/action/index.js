@@ -89,6 +89,7 @@ export const loginUser = (user) => {
     return axios.post('/api/login',user)
     .then(result => {
       if(result){
+        window.location.reload();
         dispatch({
           type: LOGIN_USER,
           user: result

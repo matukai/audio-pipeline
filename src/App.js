@@ -36,7 +36,7 @@ class App extends Component {
         <Main />
         </div>
       </div>
-    );
+    )
   }
 }
 

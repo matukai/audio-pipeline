@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import {Cookies} from 'react-cookie';
+
 class NavBar extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      toggle:false
-    }
-  }
-
-  componentWillUpdate () {
-    console.log('mount')
+    this.state = {}
   }
 
   render () {
-    // console.log(this.state)
- 
     return (
       <div>
         <nav className="navbar navbar-light bg-light">
@@ -27,13 +18,9 @@ class NavBar extends Component {
           <div className="navBarLinks" >
             <div className="navbar-nav">
               <a className="nav-item nav-link active" href="/">Home</a>
-              <a className="nav-item nav-link active" href="/login">llllllll</a>
-              {this.props.loginChecker? null: <a className="nav-item nav-link active" href="/login">Login</a>   }
-
-              {/* {this.props.loginChecker?<a className="nav-item nav-link active" href="/logout">Logout</a>:null} */}
-
-              {/* {localStorage.User || this.props.logMeOutside? null: <a className="nav-item nav-link active" href="/register">Register</a>} */}
-
+              {localStorage.User?null:<a className="nav-item nav-link active" href="/login">Login</a>}
+              {localStorage.User?null:<a className="nav-item nav-link active" href="/register">Register</a>}
+              {localStorage.User?<a className="nav-item nav-link active" href="/logout">Logout</a>:null}
             </div>
           </div>
         </nav>
@@ -43,14 +30,12 @@ class NavBar extends Component {
 }
 
 const mapStateTopProps = state =>{
-  // console.log(state.users)
  return{
-    loginChecker: state.users.checkLogin
+   
   }
 }
 
 const mapDispatchToProps = dispatch =>{
-  // console.log(dispatch)
   return{
   
   }
