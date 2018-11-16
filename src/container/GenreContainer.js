@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import {getGenres} from '../action';
-import  {connect} from 'react-redux';
+import {connect} from 'react-redux';
 import Genre from './Genre';
 class GenreContainer extends Component {
   constructor(props) {
     super(props)
-  }
-
-  componentDidMount() {
-    // this.props.getGenres()
   }
 
   render() {
