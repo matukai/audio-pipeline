@@ -8,39 +8,28 @@ class Genre extends Component {
     super(props)
     this.state = {
       toggle: false,
-      // disGenre: props.idvGenre.genre,
-      prevGenre: null
     }
-    // console.log(props.idvGenre.genre)
   }
 
   onClick() {
-    // console.log('click')
-    // console.log(this.props.idvGenre)
     this.setState({toggle: true})
     this.props.clickedGenre(this.props.idvGenre)
-    return  <Redirect to={`/g/${this.props.idvGenre.genre}`} />
-
-    // console.log(this.props.target)
-    // if(this.props.target === this.props.idvGenre){
-    //   console.log('same')
-    //   this.setState({toggle:false})
-    // }else{
-    //   this.setState({toggle: true, prevGenre: this.props.idvGenre});
-    //   this.props.clickedGenre(this.props.idvGenre)
-
-    // }
   }
   
   redirect() {
-    // console.log('redirect')
-    // if(this.state.toggle){
-    //   return  <Redirect to={`/g/${this.props.idvGenre.genre}`} />
-    // }
+    if(this.state.toggle){
+      this.reset()
+      return  <Redirect to={{
+        pathname: `/g/${this.props.idvGenre.genre}`
+      }} />
+    }
+  }
+
+  reset() {
+    this.setState({toggle:false})
   }
 
   render() {
-    // console.log('render',this.state.disGenre)
     return (
       <div onClick={this.onClick.bind(this)}>
       {this.redirect()}
@@ -51,7 +40,6 @@ class Genre extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     target:state.threads.clickGenre
   }

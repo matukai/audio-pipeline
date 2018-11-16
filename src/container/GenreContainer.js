@@ -9,7 +9,7 @@ class GenreContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="genreContainer">
         {this.props.genres?this.props.genres.map((elem,idx) => {
         return <Genre idvGenre={elem} key={idx}/>
         }):null}
