@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import GenreContainer from './GenreContainer';
+import Footer from './Footer';
 
 class SideBar extends Component {
   constructor(props){
@@ -12,6 +13,7 @@ class SideBar extends Component {
     return (
       <div className="sideBar">
         <GenreContainer />
+        <Footer />
       </div>
     )
   }

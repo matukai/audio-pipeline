@@ -7,7 +7,7 @@ class Genre extends Component {
   constructor(props){
     super(props)
     this.state = {
-      toggle: false,
+      toggle: false
     }
   }
 
@@ -18,7 +18,7 @@ class Genre extends Component {
   
   redirect() {
     if(this.state.toggle){
-      this.reset()
+      this.reset();
       return  <Redirect to={{
         pathname: `/g/${this.props.idvGenre.genre}`
       }} />
@@ -32,8 +32,8 @@ class Genre extends Component {
   render() {
     return (
       <div onClick={this.onClick.bind(this)}>
-      {this.redirect()}
-        {this.props.idvGenre?<h1>{this.props.idvGenre.genre}</h1>:null}
+        {this.redirect()}
+        {this.props.idvGenre?<span>{this.props.idvGenre.genre}</span>:null}
       </div>
     )
   }

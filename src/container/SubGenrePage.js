@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import SubGenreContainer from './SubGenreContainer';
+import SubGenre from './SubGenre';
 
 class SubGenrePage extends Component {
   constructor(props){
@@ -8,16 +8,23 @@ class SubGenrePage extends Component {
   }
 
   render() {
-    let a = this.props.genres?this.props.genres.filter((elem,idx) => {
+    let subGenre = this.props.genres?this.props.genres.filter((elem,idx) => {
       return elem.genre === this.props.match.params.id
     }):null
-    a = a?a[0].subgenres:null;
+
+    subGenre = subGenre?subGenre[0].subgenres:null;
     return (
       <div className="subGenrePage">
-        <h1>SubGenre Page</h1>
-        {/* <h1>{this.props.subgenre.genre}</h1> */}
-        <h1>LIST OF SUB GENRES</h1>
-        <SubGenreContainer sub={a} />
+        <div className="subGenreTitle">
+          <h1>{this.props.match.params.id}</h1>
+        </div>
+        <br/>
+        <br/>
+        <div className="subCardBox">
+          {subGenre?subGenre.map((elem,idx) => {
+            return <SubGenre key={idx} s={elem} />
+          }):null}
+        </div>
       </div>
     )
   }

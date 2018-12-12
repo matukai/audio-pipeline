@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './App.css';
+import './index.scss';
 import { recentThreads, getGenres } from './action'
 import Header from './container/Header';
 import Central from './container/Central';
-import Footer from './container/Footer';
 import { withRouter } from 'react-router-dom';
 import {checkLogin} from './action/index';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 class App extends Component {
     constructor(props){
@@ -24,12 +25,10 @@ class App extends Component {
   }
   
   render() {
-    console.log('App')
     return (
       <div className="App">
         <Header />
         <Central />
-        <Footer />
       </div>
     )
   }

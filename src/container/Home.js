@@ -12,11 +12,7 @@ class Home extends Component {
   render() {
     console.log('Home')
     return (
-      <div className="Home">
-      <br/>
-        <TestComponent />
-      <br/>
-
+      <div className="home">
         <h1>HoMePaGe</h1>
         <br/>
         <div className="threadBox">

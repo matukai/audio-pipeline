@@ -31,9 +31,11 @@ class Thread extends Component {
       <div className="thread" onClick={this.onClick.bind(this)}>
         {this.redirect()}
         <h1>{this.props.thread.title}</h1>
-        <h1>{this.props.thread.body}</h1>
-        {this.props.thread.link ? <ReactPlayer controls url={this.props.thread.link} /> : null}
-        <h1>Posted By: {this.props.thread.users.username}</h1>
+        <span>{this.props.thread.body}</span>
+        <div className="threadVideo">
+          {this.props.thread.link ? <ReactPlayer className="reactPlayer" width="100%;" controls url={this.props.thread.link} /> : null}
+        </div>
+        <span>Posted By: {this.props.thread.users.username}</span>
         <br/>
      </div>
     )
