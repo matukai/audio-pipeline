@@ -9,9 +9,9 @@ module.exports = {
     client: 'pg',
     connection: {
       host : '127.0.0.1',
-      user : database.user,
-      password : database.password,
-      database : database.database,
+      user : database.development.user,
+      password : database.development.password,
+      database : database.development.database,
       charset: 'utf8'
     },
     migrations: {
@@ -42,9 +42,9 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'database.production.database',
+      user:     'database.production.user',
+      password: 'database.production.password'
     },
     pool: {
       min: 2,
