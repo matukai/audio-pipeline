@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import './App.css';
-import './index.scss';
 import { recentThreads, getGenres } from './action'
 import Header from './container/Header';
 import Central from './container/Central';
 import { withRouter } from 'react-router-dom';
 import {checkLogin} from './action/index';
-import { StickyContainer, Sticky } from 'react-sticky';
 
 class App extends Component {
     constructor(props){
