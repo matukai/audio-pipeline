@@ -24,9 +24,9 @@ class SubGenre extends Component {
 
   render() {
     return (
-      <div  onClick={this.onClick.bind(this)}>
+      <div className="subGenreCard" onClick={this.onClick.bind(this)}>
            {this.redirect()}
-           <h1>{this.props.s.subgenre}</h1>
+           <p>{this.props.s.subgenre}</p>
       </div>
     )
   }

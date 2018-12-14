@@ -5,28 +5,35 @@ import {clickedGenre} from '../action';
 
 class Genre extends Component {
   constructor(props){
-    super(props);
+    super(props)
     this.state = {
       toggle: false
     }
   }
 
   onClick() {
-    this.setState({toggle: true});
+    this.setState({toggle: true})
     this.props.clickedGenre(this.props.idvGenre)
   }
-
+  
   redirect() {
     if(this.state.toggle){
-      return  <Redirect to={`/g/${this.props.idvGenre.genre}`} />
+      this.reset();
+      return  <Redirect to={{
+        pathname: `/g/${this.props.idvGenre.genre}`
+      }} />
     }
+  }
+
+  reset() {
+    this.setState({toggle:false})
   }
 
   render() {
     return (
       <div onClick={this.onClick.bind(this)}>
-      {this.redirect()}
-        <h1>{this.props.idvGenre.genre}</h1>
+        {this.redirect()}
+        {this.props.idvGenre?<span>{this.props.idvGenre.genre}</span>:null}
       </div>
     )
   }
@@ -34,7 +41,7 @@ class Genre extends Component {
 
 const mapStateToProps = state => {
   return {
-
+    target:state.threads.clickGenre
   }
 }
 

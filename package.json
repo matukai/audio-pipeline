@@ -57,6 +57,7 @@
     "react-redux": "^5.1.1",
     "react-responsive-navbar": "^1.0.11",
     "react-router-dom": "^4.3.1",
+    "react-sticky": "^6.0.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "resolve": "1.6.0",
@@ -72,6 +73,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "deploy": "aws s3 sync build/ s3://audio-pipeline",
     "test": "node scripts/test.js --env=jsdom"
   },
   "proxy": "http://localhost:8080/",

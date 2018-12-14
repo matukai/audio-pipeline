@@ -7,6 +7,7 @@ const User = require('../db/models/Users');
 
 router.route('/')
 .get((req,res) => {
+  console.log('route')
   return Subgenre
   .fetchAll({withRelated: ['genres']})
   .then(allSubgenres => {
@@ -14,6 +15,19 @@ router.route('/')
   })
   .catch(err => {
     res.json({message: err})
+  })
+})
+.post((req,res) => {
+  return new Subgenre ({
+    subgenre: req.body.subgenre,
+    genre_id: req.body.genreId
+  })
+  .save()
+  .then(newSubGenre => {
+    return res.json(newSubGenre)
+  })
+  .catch(err => {
+    res.json({message:err})
   })
 })
 

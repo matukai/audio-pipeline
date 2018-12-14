@@ -6,6 +6,7 @@ import About from '../component/About';
 import Login from '../container/Login';
 import Logout from '../container/Logout';
 import Register from '../container/Register';
+import Thread from '../container/Thread';
 import ThreadDetail from '../container/ThreadDetail';
 import GenreContainer from '../container/GenreContainer';
 import SubGenrePage from '../container/SubGenrePage';

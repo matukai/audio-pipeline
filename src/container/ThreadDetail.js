@@ -20,15 +20,20 @@ class ThreadDetail extends Component {
 
   render() {
     return (
-      <div className="threadDetail">
+      <div className="threadDetail" style={{backgroundColor:'green;'}}>
         {this.props.thread? 
-          <div>
+          <div className="as" style={{backgroundColor:'white;'}} >
+            <h1>asdfadfasdfdas</h1>
             <h1>{this.props.thread.title}</h1>
             <br/>
             <p>{this.props.thread.body}</p>
             <br/>
-            {this.props.thread.link ? <ReactPlayer controls url={this.props.thread.link} /> : null}
+              <div className="threadDetailPlayer">
+                {this.props.thread.link ? <ReactPlayer width="100%" controls url={this.props.thread.link} /> : null}
+              </div>
             <br/>
+            <span>Posted By: {this.props.thread.users.username}</span>
+
             {localStorage.User? <CommentForm threadId={this.props.thread.id} />:null}
             <br/>
             <CommentContainer threadId={this.props.thread.id} comments={this.props.thread.comments} />

@@ -4,10 +4,12 @@ class Footer extends Component {
   constructor(props) {
     super(props)
   }
+
   render() {
     return (
       <div className="footer">
-      <h1>footer</h1>
+      <h1>&copy; 2018</h1>
+      
       </div>
     )
   }

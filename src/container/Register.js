@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import '../index.scss';
+// import '../index.scss';
 import { registerUser } from '../action/index';
 import { Redirect } from 'react-router-dom';
 

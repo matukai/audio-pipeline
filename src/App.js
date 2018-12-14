@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import './App.css';
 import { recentThreads, getGenres } from './action'
 import Header from './container/Header';
-import Main from './component/Main';
-import Footer from './container/Footer';
+import Central from './container/Central';
 import { withRouter } from 'react-router-dom';
 import {checkLogin} from './action/index';
 
 class App extends Component {
     constructor(props){
       super(props)
-      this.state = {
-        log: false
-      }
     }
 
   componentWillMount () {
@@ -30,8 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main />
-        <Footer />
+        <Central />
       </div>
     )
   }
