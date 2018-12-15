@@ -1,21 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {connect} from 'react-redux';
+import { recentThreads, getGenres } from './action'
+import Header from './container/Header';
+import Central from './container/Central';
+import { withRouter } from 'react-router-dom';
+import {checkLogin} from './action/index';
 
 class App extends Component {
+    constructor(props){
+      super(props)
+    }
+
+  componentWillMount () {
+    this.props.recentThreads();
+    this.props.getGenres();
+    this.props.checkLogin();
+  }
+
+  componentWillUpdate() {
+    this.props.recentThreads();
+  }
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
+        <Central />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+const mapStateTopProps = state =>{
+ return{
+    users:state.user
+  }
+}
+
+const mapDispatchToProps = dispatch =>{
+  return{
+    recentThreads: ()=>{
+      dispatch(recentThreads())
+    },
+    getGenres: () => {
+      dispatch(getGenres())
+    },
+    checkLogin: () => {
+      dispatch(checkLogin())
+    }
+  }
+}
+
+const ConnectedApp = connect (
+  mapStateTopProps,
+  mapDispatchToProps
+)(App)
+
+export default withRouter(ConnectedApp);
